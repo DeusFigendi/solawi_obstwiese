@@ -19,7 +19,20 @@ with open('./baumdaten.json','r') as baumdatei:
 output_string =    "| URL         | Nummer | Gattung | Spezies | Notiz |"
 output_string += "\n|-------------|--------|---------|---------|-------|"
 for baum in baumdaten:
-	output_string += "\n"+"| [![QR-Code zu OSM]("+osmid2qrurl(baum['osm_id'])+")]("+osmid2osmurl(baum['osm_id'])+") | "+str(baum['solawi_id'])+" | "+str(baum['genus'])+" | "+str(baum['species'])+" | "+str(baum['notiz'])+" | "
+	output_string += "\n"+"| [![QR-Code zu OSM]("+osmid2qrurl(baum['osm_id'])+")]("+osmid2osmurl(baum['osm_id'])+") | "+str(baum['solawi_id'])
+	if baum['genus'] != None:
+		output_string += " | "+str(baum['genus'])
+	else:
+		output_string += " | "
+	if baum['species'] != None:
+		output_string += " | "+str(baum['species'])
+	else:
+		output_string += " | "
+	if baum['notiz'] != None:
+		output_string += " | "+str(baum['notiz'])
+	else:
+		output_string += " | "
+		
 	
 with open('./baumdaten.md','w') as baumdatei:
 	baumdatei.write(output_string)
