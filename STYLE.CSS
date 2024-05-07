@@ -1,0 +1,34 @@
+b, strong, em {
+	font-size:1.8em;
+	padding:0px;
+	margin:0px;
+}
+
+td, th {
+	text-align:center;
+	border: 1px solid;	
+}
+
+td img {
+	width: 4em;
+}
+
+tr:nth-of-type(odd) {
+  background-color: #eee;
+}
+
+tr th:nth-child(3), tr th:nth-child(4), tr th:nth-child(5) {
+	width:28em;
+}
+
+tr th:nth-child(1), tr th:nth-child(2) {
+	width: 1em;
+	height: 1em;
+	margin: 0px;
+	padding:0px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

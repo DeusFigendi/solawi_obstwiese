@@ -2,7 +2,7 @@ import json
 import subprocess
 
 def osmid2osmurl(i):
-	return("https://www.openstreetmap.org/node/"+str(i)+"#map=19/52.00231/8.79719")
+	return("https://www.openstreetmap.org/node/"+str(i)+"?minlon=8.79507&minlat=52.00164&maxlon=8.79688&maxlat=52.00304#map=19/52.00232/8.79611")
 	
 def osmid2qrurl(i):
 	osm_url = osmid2osmurl(i)
@@ -16,10 +16,10 @@ def osmid2qrurl(i):
 with open('./baumdaten.json','r') as baumdatei:
 	baumdaten = json.load(baumdatei)
 	
-output_string =    "| URL         | Nummer | Gattung | Spezies | Notiz |"
-output_string += "\n|-------------|--------|---------|---------|-------|"
+output_string =    "| URL         | Nr | Gattung | Spezies | Notiz |"
+output_string += "\n|-------------|----|---------|---------|-------|"
 for baum in baumdaten:
-	output_string += "\n"+"| [![QR-Code zu OSM]("+osmid2qrurl(baum['osm_id'])+")]("+osmid2osmurl(baum['osm_id'])+") | "+str(baum['solawi_id'])
+	output_string += "\n"+"| [![QR-Code zu OSM]("+osmid2qrurl(baum['osm_id'])+")]("+osmid2osmurl(baum['osm_id'])+") | **"+str(baum['solawi_id'])+'** '
 	if baum['genus'] != None:
 		output_string += " | "+str(baum['genus'])
 	else:
@@ -32,6 +32,7 @@ for baum in baumdaten:
 		output_string += " | "+str(baum['notiz'])
 	else:
 		output_string += " | "
+	output_string += " | "
 		
 	
 with open('./baumdaten.md','w') as baumdatei:
@@ -52,3 +53,11 @@ with open('./baumdaten.md','w') as baumdatei:
 #						  v/Kf+xP4AMJRXK7oXC4zAAAAAElFTkSuQmCC
 
 # https://www.openstreetmap.org/?minlon=-0.489&minlat=51.28&maxlon=0.236&maxlat=51.686#map=9/51.4835/-0.1265
+# https://www.openstreetmap.org/?minlon=8.79507&minlat=52.00164&maxlon=8.79688&maxlat=52.00304#map=19/52.00232/8.79611
+# https://www.openstreetmap.org/#map=19/52.00231/8.79719
+
+#52.00241/8.79507
+#52.00243/8.79688
+
+#52.00304/8.79621
+#52.00164/8.79616
